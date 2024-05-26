@@ -1,5 +1,4 @@
 
--- FUNCTION 
 function coins()
     gg.alert("ʏᴏᴜ ɴᴇᴇᴅ ʟɪsɪᴀ ғᴏʀ ᴛʜɪs ᴍᴇᴛʜᴏᴅ\nᴛᴜᴛᴏʀɪᴀʟ: ɪғ ᴛʜᴇ sᴄʀɪᴘᴛ sᴀʏs sᴜᴄᴄᴇss ᴅᴇʟᴇᴛᴇ ᴛʜᴇ ʟɪsɪᴀ.", "ᴏᴋᴀʏ")
     gg.searchNumber("120", gg.TYPE_DOUBLE)
@@ -51,7 +50,7 @@ end
 
 -- Function to handle the gacha event
 function gacha()
-    local se = gg.choice({"Fʀᴇᴇ ʀᴇᴅ ɴɪsʜɪᴋᴀᴡᴀ ᴄʟᴀɪᴍ⚡", "ʙᴀᴄᴋ"}, nil, "ɢᴀᴄʜᴀ ᴇᴠᴇɴᴛs")
+    local se = gg.choice({"Fʀᴇᴇ ʀᴇᴅ ɴɪsʜɪᴋᴀᴡᴀ ᴄʟᴀɪᴍ⚡", "ʙʟᴜᴇ ғʟᴀᴍᴇ ʙᴜғғ", "ʙᴀᴄᴋ"}, nil, "ɢᴀᴄʜᴀ ᴇᴠᴇɴᴛs")
     if se == 1 then 
         nishiclaim()
     elseif se == 2 then
@@ -94,6 +93,15 @@ if ee[1] == I then A = true end
 end
 if A ~= true then gg.alert("Passkey is Wrong!⚠️") return else
 gg.alert("Welcome User!", "Okay!") end
+gg.setVisible(false)
+gg.toast("𝙱𝚢𝚙𝚊𝚜𝚜𝚒𝚗𝚐 𝙱𝚊𝚗(𝙰𝚗𝚝𝚒-𝙱𝚊𝚗)...")
+gg.searchNumber("h D2 1C 00 00 00 03 56 15 04 00 00 B8 00 00 0F 84 FB FF 25 45", gg.TYPE_BYTE, false, gg.SIGN_EQUAL, 0, -1)
+gg.getResults(9999)
+gg.editAll("h D2 1C 00 00 00 00 00 00 04 00 00 B8 00 00 0F 84 FB FF 25 45", gg.TYPE_BYTE)
+gg.clearResults()
+gg.toast("ᴀɴᴛɪ-ʙᴀɴ sᴜᴄᴄᴇssғᴜʟʟʏ ᴛᴜʀɴᴇᴅ-ᴏɴ😍")
+
+
 -- Main loop
 while true do
     if gg.isVisible(true) then
