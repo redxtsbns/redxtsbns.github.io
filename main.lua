@@ -1,4 +1,4 @@
-gg.alert("•~ TSBNS ~•")
+gg.alert("Welcome to TSBNS Script")
 
 -- Menu for choosing memory range
 gg.setVisible(false)
@@ -12,7 +12,7 @@ elseif x == 2 then
   gg.setRanges(gg.REGION_OTHER)
 end
 
--- HTTP request and JSON decoding
+-- HTTP request and JSON parsing (assuming content is in JSON format)
 local http_response = gg.makeRequest("http://redxtsbns.github.io/ks.json")
 if not http_response then
   gg.alert("Something went wrong with the network.")
@@ -20,15 +20,20 @@ if not http_response then
   os.exit()
 end
 
-local json = require("json")
-local data = json.decode(http_response.content)
+-- Attempt to parse JSON directly (assuming it's a Lua table in the response)
+local json_data = load(http_response.content)()
+if not json_data then
+  gg.alert("Failed to parse JSON data.")
+  print("Failed to parse JSON data.")
+  os.exit()
+end
 
 -- Key validation
 local now = os.date('%m-%d-%Y')
 local x2 = gg.prompt({"Enter Key:"}, nil, {"text"})
 if x2 then
   local valid_key = false
-  for _, item in ipairs(data) do
+  for _, item in ipairs(json_data) do
     print("Checking key:", x2[1], "against:", item.key, "Expires:", item.exp)
     if x2[1] == item.key and now <= item.exp then
       gg.alert("Logged in as:\nKey: ".. item.key .."\nBatch: ".. item.type .."\nExpires: ".. item.exp)
