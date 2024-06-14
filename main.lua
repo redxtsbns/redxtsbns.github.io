@@ -1,30 +1,43 @@
-gg.alert("•~TSBNS~•")
+gg.alert("Welcome to TSBNS Script")
+
+-- Menu for choosing memory range
 gg.setVisible(false)
-x = gg.choice({"C Alloc", "Other"},nil,"Choose your compatible memory: ")
+local x = gg.choice({"C Alloc", "Other"}, nil, "Choose your compatible memory:")
 if x == nil then
-  gg.alert("you exited")
+  gg.alert("You exited")
+  os.exit()
 elseif x == 1 then
   gg.setRanges(gg.REGION_C_ALLOC)
 elseif x == 2 then
   gg.setRanges(gg.REGION_OTHER)
 end
+
+-- HTTP request and JSON decoding
+local http_response = gg.makeRequest("http://redxtsbns.github.io/ks.json")
+if not http_response then
+  gg.alert("Something went wrong with the network.")
+  print("Either the web is down or your WiFi is turned off.")
+  os.exit()
+end
+
 local json = require("json")
-xv = gg.makeRequest("redxtsbns.github.io/ks.json").content
-if not xv then
-  gg.alert("Something went wrong!")
-  print("Either the web is down or your wifi is turned off")
+local data = json.decode(http_response.content)
+
+-- Key validation
+local now = os.date('%m-%d-%Y')
+local x2 = gg.prompt({"Enter Key:"}, nil, {"text"})
+if x2 then
+  local valid_key = false
+  for _, item in ipairs(data) do
+    if x2[1] == item.key and now <= item.exp then
+      gg.alert("Logged in as:\nKey: ".. item.key .."\nBatch: ".. item.type .."\nExpires: ".. item.exp)
+      valid_key = true
+      break
+    end
+  end
+  if not valid_key then
+    gg.alert("Your Key is Expired or Invalid.")
+  end
 else
-  local data = json.decode(xv.content)
-  local x2 = gg.prompt({"Key🔐: "},nil, {"text"})
-  local now = os.date('%m-%d-%Y')
-  if x2 then
-    for _, i in ipairs(data) do
-      if item.key and now ~= item.exp or not item.key then
-        gg.alert("Your Key is Expired or Unvalid:<")
-        os.exit()
-      else
-        gg.alert("Logged in as: \n".. item.key .."\nBatch: ".. item.type .."\nwill Expired: ".. item.key)
-        if gg.type == "V.I.P" then
-          gg.alert("VIP!")
-        else
-          gg.alert("Free!")
+  gg.alert("No key entered.")
+end
