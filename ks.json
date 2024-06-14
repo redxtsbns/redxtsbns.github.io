@@ -1,3 +1,4 @@
 [
-  { "key": "test1", "type": "Free", "exp": "06-15-2024"}
+  { "key": "test1", "type": "Free", "exp": "06-15-2024"},
+  { "key": "test2", "type": "V.I.P", "exp": "06-15-2024"}
 ]
