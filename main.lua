@@ -1,4 +1,4 @@
-gg.alert("Welcome to TSBNS Script")
+gg.alert("•~ TSBNS ~•")
 
 -- Menu for choosing memory range
 gg.setVisible(false)
