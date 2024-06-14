@@ -29,6 +29,7 @@ local x2 = gg.prompt({"Enter Key:"}, nil, {"text"})
 if x2 then
   local valid_key = false
   for _, item in ipairs(data) do
+    print("Checking key:", x2[1], "against:", item.key, "Expires:", item.exp)
     if x2[1] == item.key and now <= item.exp then
       gg.alert("Logged in as:\nKey: ".. item.key .."\nBatch: ".. item.type .."\nExpires: ".. item.exp)
       valid_key = true
