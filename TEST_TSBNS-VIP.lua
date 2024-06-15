@@ -1,5 +1,6 @@
 gg.alert("👑 𝚃𝚂𝙱𝙽𝚂 👑")
 ---[ BUTTONS ] ---
+-- HHH
 tr_g = "🟥"
 tr_g2 = "🟥"
 tr_v = "🟥"
